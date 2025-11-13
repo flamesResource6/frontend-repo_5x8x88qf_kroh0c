@@ -15,11 +15,16 @@ export default function About() {
         >
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">About Me</h2>
           <p className="mt-4 text-zinc-600 dark:text-zinc-300 leading-relaxed">
-            I'm Abdul Raoof, a passionate Frontend Developer who loves crafting delightful, accessible, and performant user interfaces. I focus on building user-friendly experiences with React, Tailwind CSS, and modern JavaScript, turning ideas into polished products.
+            I'm Abdul Raoof, a passionate Frontend Developer who loves crafting delightful, accessible, and performant user interfaces. I focus on building user-friendly experiences with React, Tailwind CSS, and modern JavaScript.
           </p>
-          <p className="mt-3 text-zinc-600 dark:text-zinc-300 leading-relaxed">
-            I enjoy collaborating with teams, designing component systems, and shipping reliable features. When I'm not coding, I explore design trends and micro-interactions to make the web more human.
-          </p>
+          <div className="mt-6 grid sm:grid-cols-2 gap-4">
+            {["Component-driven", "Accessible", "Performant", "Well-tested"].map((badge) => (
+              <div key={badge} className="rounded-xl border border-zinc-200/70 dark:border-zinc-800/70 bg-white/60 dark:bg-zinc-900/60 p-4 text-sm">
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400 mr-2 align-middle" />
+                {badge}
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         <motion.div

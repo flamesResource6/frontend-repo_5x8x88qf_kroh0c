@@ -4,11 +4,13 @@ import { motion } from 'framer-motion'
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-[90vh] flex items-center overflow-hidden">
+    <section id="home" className="relative min-h-[92vh] flex items-center overflow-hidden">
+      {/* Spline 3D background */}
       <div className="absolute inset-0">
         <Spline scene="https://prod.spline.design/VJLoxp84lCdVfdZu/scene.splinecode" style={{ width: '100%', height: '100%' }} />
       </div>
 
+      {/* Gradient scrim for contrast */}
       <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/40 to-white/10 dark:from-zinc-950/70 dark:via-zinc-950/40 dark:to-zinc-950/10 pointer-events-none" />
 
       <div className="relative mx-auto max-w-6xl px-6 sm:px-8 w-full">
@@ -25,9 +27,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="mt-3 text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-sky-500 to-cyan-400"
+            className="mt-3 inline-flex items-center gap-2 text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-sky-500 to-cyan-400"
           >
-            Frontend Developer
+            <span className="h-2 w-2 rounded-full bg-indigo-500 animate-pulse" /> Frontend Developer
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -35,7 +37,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mt-6 text-zinc-600 dark:text-zinc-300 leading-relaxed"
           >
-            I create engaging, responsive, and modern web experiences.
+            I design and build immersive, accessible web experiences with a focus on performance and delightful micro-interactions.
           </motion.p>
 
           <motion.div
@@ -49,6 +51,17 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
+
+      {/* Scroll cue */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1 }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs text-zinc-500 dark:text-zinc-400"
+      >
+        <div className="h-10 w-[2px] mx-auto bg-gradient-to-b from-transparent via-zinc-400/50 to-transparent animate-pulse" />
+        Scroll
+      </motion.div>
     </section>
   )
 }

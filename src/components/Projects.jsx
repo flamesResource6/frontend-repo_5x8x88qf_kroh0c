@@ -31,8 +31,8 @@ export default function Projects() {
               onClick={() => setActive(t)}
               className={`px-3 py-1.5 rounded-xl text-sm border transition ${
                 active === t
-                  ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 border-zinc-900 dark:border-white'
-                  : 'border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800'
+                  ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 border-zinc-900 dark:border-white shadow'
+                  : 'border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100/70 dark:hover:bg-zinc-800/70'
               }`}
             >
               {t}
@@ -66,7 +66,7 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.4 }}
-              className="group relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/60 backdrop-blur-md shadow-sm hover:shadow-lg"
+              className="group relative overflow-hidden rounded-2xl border border-zinc-200/70 dark:border-zinc-800/70 bg-white/70 dark:bg-zinc-900/60 backdrop-blur-md shadow-[0_10px_30px_-12px_rgba(0,0,0,0.15)] hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.25)] transition-shadow"
             >
               <div className="aspect-[16/10] w-full overflow-hidden">
                 <img src={p.img} alt="" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -78,8 +78,9 @@ export default function Projects() {
                 </div>
                 <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">{p.desc}</p>
               </div>
+              {/* Glow on hover */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
-                <div className="absolute -inset-10 bg-gradient-to-r from-indigo-500/0 via-indigo-500/20 to-cyan-400/0 blur-2xl" />
+                <div className="absolute -inset-10 bg-gradient-to-r from-indigo-500/0 via-indigo-500/25 to-cyan-400/0 blur-2xl" />
               </div>
             </motion.a>
           ))}

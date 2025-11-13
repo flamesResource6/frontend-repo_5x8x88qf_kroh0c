@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Menu, X, Sun, Moon, Github, Linkedin, Mail } from 'lucide-react'
+import React, { useEffect, useMemo, useState } from 'react'
+import { Menu, X, Sun, Moon, Github, Linkedin, Mail, Sparkles } from 'lucide-react'
 
 const links = [
   { href: '#home', label: 'Home' },
@@ -40,22 +40,38 @@ export default function Navbar() {
     return () => observer.disconnect()
   }, [])
 
+  const gradientBorder = useMemo(
+    () => ({
+      background:
+        'linear-gradient(var(--tw-gradient-angle, 120deg), rgba(244,244,245,0.8), rgba(244,244,245,0.65)) padding-box, linear-gradient(120deg, rgba(99,102,241,0.6), rgba(14,165,233,0.6)) border-box',
+    }),
+    []
+  )
+
   return (
     <div className="fixed top-4 left-0 right-0 z-50">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="backdrop-blur-xl bg-white/70 dark:bg-zinc-900/60 shadow-lg shadow-black/5 border border-zinc-200/60 dark:border-zinc-800/70 rounded-2xl">
+        <div
+          className="rounded-2xl border bg-white/60 dark:bg-zinc-900/50 backdrop-blur-xl shadow-[0_10px_35px_-10px_rgba(0,0,0,0.2)] dark:shadow-[0_10px_35px_-10px_rgba(0,0,0,0.5)] border-transparent"
+          style={gradientBorder}
+        >
           <div className="flex items-center justify-between px-4 py-3">
-            <a href="#home" className="font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">AR.</a>
+            <a href="#home" className="inline-flex items-center gap-2 font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">
+              <span className="relative">
+                <Sparkles className="absolute -left-4 -top-3 text-indigo-500/70" size={14} />
+                AR.
+              </span>
+            </a>
 
-            <div className="hidden md:flex items-center gap-2">
+            <div className="hidden md:flex items-center gap-1">
               {links.map((l) => (
                 <a
                   key={l.href}
                   href={l.href}
-                  className={`px-3 py-2 rounded-lg text-sm transition-colors ${
+                  className={`px-3 py-2 rounded-xl text-sm transition-all duration-200 ${
                     active === l.href.substring(1)
-                      ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900'
-                      : 'text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800'
+                      ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 shadow-sm'
+                      : 'text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100/70 dark:hover:bg-zinc-800/70'
                   }`}
                 >
                   {l.label}
@@ -67,14 +83,14 @@ export default function Navbar() {
               <button
                 aria-label="Toggle theme"
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300"
+                className="p-2 rounded-xl hover:bg-zinc-100/70 dark:hover:bg-zinc-800/70 text-zinc-700 dark:text-zinc-300 transition"
               >
                 {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
               </button>
               <button
                 aria-label="Open menu"
                 onClick={() => setOpen(!open)}
-                className="p-2 rounded-lg md:hidden hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300"
+                className="p-2 rounded-xl md:hidden hover:bg-zinc-100/70 dark:hover:bg-zinc-800/70 text-zinc-700 dark:text-zinc-300 transition"
               >
                 {open ? <X size={20} /> : <Menu size={20} />}
               </button>
@@ -82,17 +98,17 @@ export default function Navbar() {
           </div>
 
           {open && (
-            <div className="md:hidden border-t border-zinc-200 dark:border-zinc-800 px-4 py-2">
+            <div className="md:hidden border-t border-zinc-200/60 dark:border-zinc-800/60 px-4 py-2">
               <div className="flex flex-col py-2">
                 {links.map((l) => (
                   <a
                     key={l.href}
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className={`px-3 py-2 rounded-lg text-sm transition-colors ${
+                    className={`px-3 py-2 rounded-xl text-sm transition-colors ${
                       active === l.href.substring(1)
-                        ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900'
-                        : 'text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800'
+                        ? 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900'
+                        : 'text-zinc-700 hover:bg-zinc-100/70 dark:text-zinc-300 dark:hover:bg-zinc-800/70'
                     }`}
                   >
                     {l.label}

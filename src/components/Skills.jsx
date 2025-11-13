@@ -40,7 +40,7 @@ export default function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, delay: i * 0.05 }}
-            className="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/60 backdrop-blur-md p-6 shadow-sm hover:shadow-md transition"
+            className="rounded-2xl border border-zinc-200/70 dark:border-zinc-800/70 bg-white/70 dark:bg-zinc-900/60 backdrop-blur-md p-6 shadow-[0_8px_28px_-12px_rgba(0,0,0,0.12)] hover:shadow-[0_16px_50px_-12px_rgba(0,0,0,0.18)] transition"
           >
             <div className="flex items-center gap-3">
               <group.icon className="text-indigo-500" />
